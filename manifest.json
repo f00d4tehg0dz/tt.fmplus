@@ -1,0 +1,40 @@
+{
+  "manifest_version": 2,
+  "name": "TT.fm+",
+  "description": "A Collection of Enhancements to Turntable.fm, including AutoBop, Dark and Light Mode Toggle",
+  "version": "1.0.3",
+  "icons": {
+    "128": "images/icon.png"
+  },
+  "content_scripts": [
+    {
+      "exclude_globs": [ "*://turntable.fm/", "*://turntable.fm/lobby", "*://turntable.fm/about", "*://turntable.fm/jobs", "*://turntable.fm/privacy", "*://turntable.fm/copyright", "*://turntable.fm/terms", "*://turntable.fm/static/*" ],
+      "matches": ["*://turntable.fm/*"],
+      "css": ["css/index.css"],
+      "js": ["js/contentScript.js", "js/startup.js"],
+      "run_at" :"document_end"
+    }
+  ],
+  "background": {
+    "scripts": ["js/background.js"]
+  },
+  "permissions": [
+    "tabs", "*://turntable.fm/*"
+  ],
+  "browser_action": {
+    "default_icon": { 
+      "32": "images/icon.png" 
+    },
+    "default_popup": "index.html",
+    "default_title": "Open Popup"
+  },
+  "commands": {
+    "_execute_browser_action": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+O",
+        "mac": "MacCtrl+Shift+O"
+      },
+      "description": "Toggle Popup"
+    }
+  }
+}
